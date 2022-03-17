@@ -9,7 +9,7 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import dev.logickoder.currencycalculator.ui.CurrencyCalculatorScreen
+import dev.logickoder.currencycalculator.ui.screens.main.CurrencyCalculatorScreen
 import dev.logickoder.currencycalculator.ui.theme.CurrencyCalculatorTheme
 
 class MainActivity : ComponentActivity() {

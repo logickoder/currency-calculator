@@ -2,7 +2,6 @@ package dev.logickoder.currencycalculator.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
@@ -11,10 +10,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import dev.logickoder.currencycalculator.R
-import dev.logickoder.currencycalculator.ui.CurrencyCode
-import dev.logickoder.currencycalculator.ui.CurrencyFlag
+import dev.logickoder.currencycalculator.ui.screens.main.CurrencyCode
+import dev.logickoder.currencycalculator.ui.screens.main.CurrencyFlag
 import dev.logickoder.currencycalculator.ui.theme.ConversionIconColor
 import androidx.compose.material.MaterialTheme as Theme
 
@@ -111,12 +109,20 @@ fun CurrencyConversionContainer(
                 onCurrencySelected = third
             )
         }
-        Icon(
-            modifier = Modifier.padding(horizontal = 8.dp),
-            painter = painterResource(id = R.drawable.ic_swap),
-            contentDescription = null,
-            tint = ConversionIconColor,
-        )
+        IconButton(
+            onClick = {
+                // swap the currency codes
+                val temp = firstCurrency.first
+                firstCurrency.third(secondCurrency.first)
+                secondCurrency.third(temp)
+            }
+        ) {
+            Icon(
+                painter = painterResource(id = R.drawable.ic_swap),
+                contentDescription = null,
+                tint = ConversionIconColor,
+            )
+        }
         with(secondCurrency) {
             CurrencyDropdownField(
                 modifier = Modifier.weight(1f),
